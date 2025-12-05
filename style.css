@@ -1,0 +1,131 @@
+/* BASIC LAYOUT */
+body {
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER ANIMATION - MODIFIED for top-left position */
+#header {
+    text-align: center;
+    margin-top: 40px;
+    position: fixed; /* Start fixed for positioning transition */
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally initially */
+    transition: all 0.7s ease;
+    z-index: 10;
+}
+
+/* New class for top-left header position */
+#header.top-left {
+    top: 15px;
+    left: 15px;
+    text-align: left;
+    transform: translateX(0); /* Remove centering transform */
+    font-size: 0.8em; /* Make it smaller */
+}
+
+#header.top-left h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+#header.top-left p {
+    display: none; /* Hide the subtitle for the minimal view */
+}
+
+/* CHAT CONTAINER - INCREASED MARGIN-TOP TO AVOID COLLISION */
+#chat-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 50px; /* Increased from 30px to 80px for clearance */
+    padding-top: 10px; /* Added some padding at the top */
+    transition: all 0.6s ease;
+}
+
+/* CHAT BOX */
+#chat-box {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.user-msg {
+    background: #204c43;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+    text-align: right;
+}
+
+.bot-msg {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+/* Style for centering the verse content (Sanskrit) */
+.bot-msg .verse-content {
+    text-align: center;
+    white-space: pre-wrap; /* Ensure Sanskrit lines break correctly */
+}
+
+/* INPUT AREA - Adjusted vertical spacing by increasing padding or margin if necessary, but margin-top on container should handle it */
+#input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#question {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #1e1e1e;
+    color: white;
+    outline: none;
+}
+
+#askBtn {
+    padding: 12px 20px;
+    background: #204c43;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#askBtn:hover {
+    background: #375e56;
+}
+
+/* TYPING INDICATOR */
+.typing {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 1;
+    transition: 0.3s ease;
+}
+
+.typing.hidden {
+    opacity: 0;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 480px) {
+    #chat-container {
+        max-width: 95%;
+    }
+}
