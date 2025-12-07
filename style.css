@@ -12,7 +12,7 @@ body {
 
 /* HEADER ANIMATION - MODIFIED for top-left position */
 #header {
-    text-align: center;
+    text-align: left;
     margin-top: 40px;
     position: fixed; /* Start fixed for positioning transition */
     top: 40px;
@@ -44,7 +44,7 @@ body {
 #chat-container {
     width: 100%;
     max-width: 1000px;
-    margin-bottom: 50px; /* Increased from 30px to 80px for clearance */
+    margin-bottom: 80px; /* Increased from 30px to 80px for clearance */
     padding-top: 10px; /* Added some padding at the top */
     transition: all 0.6s ease;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 .user-msg {
-    background: #204c43;
+    background: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
     margin: 8px 0;
@@ -68,7 +68,7 @@ body {
 }
 
 .bot-msg {
-    background: #2a2a2a;
+    background: #204c43;
     padding: 10px;
     border-radius: 8px;
     margin: 8px 0;
@@ -77,14 +77,13 @@ body {
 /* Style for centering the verse content (Sanskrit) */
 .bot-msg .verse-content {
     text-align: center;
-    white-space: pre-wrap; /* Ensure Sanskrit lines break correctly */
 }
 
 /* INPUT AREA - Adjusted vertical spacing by increasing padding or margin if necessary, but margin-top on container should handle it */
 #input-area {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 #question {
