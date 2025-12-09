@@ -12,7 +12,7 @@ body {
 
 /* HEADER ANIMATION - MODIFIED for top-left position */
 #header {
-    text-align: left;
+    text-align: center;
     margin-top: 40px;
     position: fixed; /* Start fixed for positioning transition */
     top: 40px;
@@ -42,6 +42,8 @@ body {
 
 /* CHAT CONTAINER - INCREASED MARGIN-TOP TO AVOID COLLISION */
 #chat-container {
+    position: fixed;
+    bottom: 0;
     width: 100%;
     max-width: 1000px;
     margin-bottom: 80px; /* Increased from 30px to 80px for clearance */
@@ -57,6 +59,13 @@ body {
     max-height: 60vh;
     overflow-y: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    /* Initially hidden */
+    display: none; 
+}
+
+/* --- THE FIX: Reveal chat-box when chat-container is 'visible' --- */
+#chat-container.visible #chat-box {
+    display: block;
 }
 
 .user-msg {
@@ -79,7 +88,7 @@ body {
     text-align: center;
 }
 
-/* INPUT AREA - Adjusted vertical spacing by increasing padding or margin if necessary, but margin-top on container should handle it */
+/* INPUT AREA - Adjusted vertical spacing */
 #input-area {
     display: flex;
     gap: 10px;
@@ -115,7 +124,7 @@ body {
     margin-top: 5px;
     font-size: 14px;
     opacity: 1;
-    transition: 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .typing.hidden {
