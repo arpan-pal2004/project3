@@ -8,12 +8,18 @@ let gitaDataReady = false;
 
 function normalizeText(s) {
     if (!s) return "";
-    return s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+    // Note: The /u flag is necessary for \p{Diacritic} to work correctly with Unicode properties
+    return s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase(); 
 }
 
-
+// Ensure gitaData is defined in gita-data.js
 window.onload = () => {
-    const data = gitaData; //use js file to avoid CORS issues
+    // Assuming gitaData is available globally from gita-data.js
+    if (typeof gitaData === 'undefined' || gitaData.length === 0) {
+        console.error("gitaData is not defined or is empty. Please check gita-data.js");
+        return;
+    }
+    const data = gitaData; 
 
     paragraphs = data.map(item => {
         const contentText = item.Sanskrit.map(line => line.trim()).join('\n').trim();
@@ -29,6 +35,7 @@ window.onload = () => {
 
     normalizedParagraphs = paragraphs.map(p => normalizeText(p.full));
     gitaDataReady = true;
+    console.log("Gita data loaded and ready.");
 };
 
 
@@ -68,11 +75,11 @@ function sendMessage() {
         return;
     }
 
-    // APPLY STYLING CHANGES ON FIRST MESSAGE: Move header to top-left
+    // APPLY STYLING CHANGES ON FIRST MESSAGE:
     header.classList.add("top-left");
     
-    chatContainer.classList.add("visible");
-
+    // *** THIS LINE REVEALS THE CHAT BOX VIA THE CSS RULE ADDED ABOVE ***
+    chatContainer.classList.add("visible"); 
 
     addMessage(question, "user-msg");
     input.value = "";
@@ -98,7 +105,8 @@ function addMessage(text, type) {
     }
 
     box.appendChild(bubble);
-    box.scrollTop = box.scrollHeight;
+    // Auto-scroll to the bottom of the chat
+    box.scrollTop = box.scrollHeight; 
 }
 
 
@@ -148,6 +156,7 @@ function highlightWord(paragraph, tokens) {
     );
 
     escapedTokens.forEach(escaped => {
+        // Highlighting exact and near-exact matches with higher contrast color (#ffd54f)
         const reExact = new RegExp(escaped, "gi");
 
         html = html.replace(reExact, match =>
@@ -159,8 +168,9 @@ function highlightWord(paragraph, tokens) {
     html = words.map(w => {
         const norm = normalizeText(w);
         for (const t of tokens) {
+            // Highlighting fuzzy matches with slightly lower contrast color (#ffab40)
             if (w.length > 2 && similarity(norm, t) >= 0.7) { 
-                 if (!w.includes('<mark')) {
+                 if (!w.includes('<mark')) { // Avoid double-wrapping already highlighted words
                     return `<mark style="background:#ffab40;color:black;border-radius:4px;padding:0 3px;">${w}</mark>`;
                  }
             }
