@@ -52,6 +52,27 @@ function hideTyping() {
 }
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const themeButton = document.getElementById('theme-switch-btn');
+    const themeLink = document.getElementById('theme-style');
+    let isDark = true; // State tracker
+
+    themeButton.addEventListener('click', () => {
+        if (isDark) {
+            // Switch to the Light Theme
+            themeLink.setAttribute('href', 'style-light.css');
+            themeButton.textContent = 'Switch to Dark Theme';
+            isDark = false;
+        } else {
+            // Switch back to the Dark Theme
+            themeLink.setAttribute('href', 'style.css'); // Assuming original dark theme is 'style.css'
+            themeButton.textContent = 'Switch to Light Theme';
+            isDark = true;
+        }
+    });
+});
+
+
 // =====================================================
 // CHAT MESSAGE SENDING
 // =====================================================
@@ -219,7 +240,7 @@ function answerQuestion(query) {
     results.sort((a, b) => b.score - a.score);
 
     if (results.length === 0) {
-        addMessage("No fuzzy match found for your query in the Bhagavad Gita.", "bot-msg");
+        addMessage("No match found for your query in the Bhagavad Gita. Please try again...", "bot-msg");
         return;
     }
 
