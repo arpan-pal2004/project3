@@ -1,0 +1,150 @@
+/* style-light.css - Improved Saffron-Inspired Light Theme */
+
+/* BASIC LAYOUT */
+body {
+    margin: 0;
+    padding: 0;
+    /* Soft Cream/Parchment background */
+    background: #fffbe6; 
+    /* Darker text for high contrast */
+    color: #2e2e2e; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER ANIMATION */
+#header {
+    text-align: center;
+    margin-top: 40px;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.7s ease;
+    z-index: 10;
+    color: #2e2e2e;
+}
+
+/* New class for top-left header position */
+#header.top-left {
+    top: 15px;
+    left: 15px;
+    text-align: left;
+    transform: translateX(0);
+    font-size: 0.8em;
+}
+
+#header.top-left h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+#header.top-left p {
+    display: none;
+}
+
+/* CHAT CONTAINER */
+#chat-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 80px;
+    padding-top: 10px;
+    transition: all 0.6s ease;
+}
+
+/* CHAT BOX */
+#chat-box {
+    /* Pure White for the reading area for best contrast */
+    background: #ffffff; 
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+/* --- THE FIX: Reveal chat-box when chat-container is 'visible' --- */
+#chat-container.visible #chat-box {
+    display: block;
+}
+
+.user-msg {
+    /* Pale Saffron/Peach for user input */
+    background: #ffecd9; 
+    color: #2e2e2e; /* Dark text for readability */
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+    text-align: right;
+}
+
+.bot-msg {
+    /* Soft Blue/Aqua accent for bot messages */
+    background: #f0f8ff; 
+    color: #f0f8ff; /* Dark text for readability */
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+/* Style for centering the verse content (Sanskrit) */
+.bot-msg .verse-content {
+    text-align: center;
+}
+
+/* INPUT AREA */
+#input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+#question {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc; /* Add a subtle border */
+    background: #f5f5f5;
+    color: #2e2e2e;
+    outline: none;
+}
+
+#askBtn {
+    padding: 12px 20px;
+    /* Deep Saffron/Orange for strong CTA */
+    background: #ff8c00; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#askBtn:hover {
+    background: #e67e00; /* Slightly darker on hover */
+}
+
+/* TYPING INDICATOR */
+.typing {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    color: #2e2e2e;
+}
+
+.typing.hidden {
+    opacity: 0;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 480px) {
+    #chat-container {
+        max-width: 95%;
+    }
+}
