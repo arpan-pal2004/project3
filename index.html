@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>GitaGPT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" id="theme-style">
 </head>
-<body style="font-family:'Courier New'">
+<body style="font-family: Arial, Helvetica, sans-serif;">
 
     <div id="header">
         <h1>GītāGPT</h1>
         <p>Search from Bhagavad-gītā</p>
     </div>
+
+    <button id="theme-switch-btn" 
+            style="position: fixed; top: 15px; right: 15px; padding: 8px 15px; background: #653d21; color: white; border: none; border-radius: 6px; cursor: pointer;">
+        Switch to Light Theme
+    </button>
 
     <div id="chat-container">
         <div id="chat-box"></div>
