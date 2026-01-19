@@ -1,10 +1,17 @@
 /* BASIC LAYOUT */
+
+:root {
+  --btn-bg: #204c43;
+  --btn-text: #ffffff;
+}
+
 body {
     margin: 0;
     padding: 0;
     background: #121212;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,6 +70,41 @@ body {
     display: none; 
 }
 
+/* DIVINE GLOW – DARK MODE */
+.theme-icon {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    animation: divineGlowDark 2.8s ease-in-out infinite;
+}
+
+@keyframes divineGlowDark {
+    0% {
+        box-shadow: 0 0 6px rgba(255, 185, 90, 0.4),
+                    0 0 12px rgba(255, 160, 60, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 14px rgba(255, 200, 120, 0.8),
+                    0 0 28px rgba(255, 170, 70, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 6px rgba(255, 185, 90, 0.4),
+                    0 0 12px rgba(255, 160, 60, 0.3);
+    }
+}
+
+.theme-icon:hover {
+    transform: scale(1.08);
+}
+
+
+
 /* --- THE FIX: Reveal chat-box when chat-container is 'visible' --- */
 #chat-container.visible #chat-box {
     display: block;
@@ -75,13 +117,13 @@ body {
     margin: 8px 0;
     text-align: right;
 }
-
+/* 
 .bot-msg {
     background: #204c43;
     padding: 10px;
     border-radius: 8px;
     margin: 8px 0;
-}
+} */
 
 /* Style for centering the verse content (Sanskrit) */
 .bot-msg .verse-content {
