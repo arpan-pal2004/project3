@@ -51,25 +51,30 @@ function hideTyping() {
     document.getElementById("typing").classList.add("hidden");
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const themeButton = document.getElementById('theme-switch-btn');
     const themeLink = document.getElementById('theme-style');
-    let isDark = true; // State tracker
+
+    // DEFAULT = DARK
+    let theme = localStorage.getItem("theme") || "dark";
+    applyTheme(theme);
 
     themeButton.addEventListener('click', () => {
-        if (isDark) {
-            // Switch to the Light Theme
-            themeLink.setAttribute('href', 'style-light.css');
-            themeButton.textContent = 'Switch to Dark Theme';
-            isDark = false;
-        } else {
-            // Switch back to the Dark Theme
-            themeLink.setAttribute('href', 'style.css'); // Assuming original dark theme is 'style.css'
-            themeButton.textContent = 'Switch to Light Theme';
-            isDark = true;
-        }
+        theme = theme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", theme);
+        applyTheme(theme);
     });
+
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            themeLink.href = "style.css";
+            themeButton.src = "images/baladeva.png"; // switch to light
+        } else {
+            themeLink.href = "style-light.css";
+            themeButton.src = "images/jagannath.png"; // switch to dark
+        }
+    }
+
 });
 
 
@@ -244,7 +249,7 @@ function answerQuestion(query) {
         return;
     }
 
-    let reply = `<b>Top Matches:</b><br><br>`;
+    let reply = `<b>Best Matches:</b><br><br>`;
 
     results.slice(0, 5).forEach((r, i) => {
         const para = r.text;
