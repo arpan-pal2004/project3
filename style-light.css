@@ -8,7 +8,7 @@ body {
     background: #fffbe6; 
     /* Darker text for high contrast */
     color: #2e2e2e; 
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,6 +68,41 @@ body {
     display: none;
 }
 
+/* DIVINE GLOW – LIGHT MODE */
+.theme-icon {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    animation: divineGlowLight 3s ease-in-out infinite;
+}
+
+@keyframes divineGlowLight {
+    0% {
+        box-shadow: 0 0 6px rgba(120, 160, 255, 0.25),
+                    0 0 14px rgba(160, 190, 255, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(120, 170, 255, 0.6),
+                    0 0 30px rgba(160, 200, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 6px rgba(120, 160, 255, 0.25),
+                    0 0 14px rgba(160, 190, 255, 0.25);
+    }
+}
+
+.theme-icon:hover {
+    transform: scale(1.08);
+}
+
+
+
 /* --- THE FIX: Reveal chat-box when chat-container is 'visible' --- */
 #chat-container.visible #chat-box {
     display: block;
@@ -84,9 +119,8 @@ body {
 }
 
 .bot-msg {
-    /* Soft Blue/Aqua accent for bot messages */
     background: #f0f8ff; 
-    color: #f0f8ff; /* Dark text for readability */
+    color: #fdbed7;
     padding: 10px;
     border-radius: 8px;
     margin: 8px 0;
@@ -116,7 +150,6 @@ body {
 
 #askBtn {
     padding: 12px 20px;
-    /* Deep Saffron/Orange for strong CTA */
     background: #ff8c00; 
     color: white;
     border: none;
@@ -126,7 +159,7 @@ body {
 }
 
 #askBtn:hover {
-    background: #e67e00; /* Slightly darker on hover */
+    background: #e67e00;
 }
 
 /* TYPING INDICATOR */
