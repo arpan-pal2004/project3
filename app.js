@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme(theme) {
         if (theme === "dark") {
             themeLink.href = "style.css";
-            themeButton.src = "images/baladeva.png"; // switch to light
+            themeButton.src = "images/blackchakra.jpg"; // switch to light
         } else {
             themeLink.href = "style-light.css";
-            themeButton.src = "images/jagannath.png"; // switch to dark
+            themeButton.src = "images/whitechakra.jpg"; // switch to dark
         }
     }
 
@@ -275,3 +275,4 @@ function answerQuestion(query) {
 
     addMessage(reply, "bot-msg");
 }
+
